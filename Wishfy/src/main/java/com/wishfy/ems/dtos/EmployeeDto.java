@@ -1,13 +1,13 @@
-package com.wishfy.dtos;
+package com.wishfy.ems.dtos;
 
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 
 @Getter
@@ -17,6 +17,7 @@ import lombok.*;
 @Builder
 public class EmployeeDto {
 
+  @NotEmpty private  String name;
   @Email
   @NotNull
     private String employeeEmail;
@@ -25,6 +26,6 @@ public class EmployeeDto {
     @Size(min = 5,max = 50,message = "Employee Department Name Must Be Minimum 5 Character and Maximum 50 Character")
     private String employeeDepartment;
 
-  @NotNull(message = "Date cannot be null")
+  @NotNull
     private String joiningDate;
 }

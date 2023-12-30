@@ -1,4 +1,4 @@
-package com.wishfy.helper;
+package com.wishfy.ems.helper;
 
 import lombok.*;
 import org.springframework.http.HttpStatus;

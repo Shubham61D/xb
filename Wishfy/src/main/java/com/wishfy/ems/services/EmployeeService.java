@@ -1,6 +1,6 @@
-package com.wishfy.services;
+package com.wishfy.ems.services;
 
-import com.wishfy.dtos.EmployeeDto;
+import com.wishfy.ems.dtos.EmployeeDto;
 
 import java.util.List;
 

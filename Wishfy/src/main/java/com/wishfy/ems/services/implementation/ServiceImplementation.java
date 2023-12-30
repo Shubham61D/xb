@@ -1,11 +1,11 @@
-package com.wishfy.services.implementation;
+package com.wishfy.ems.services.implementation;
 
-import com.wishfy.dtos.EmployeeDto;
-import com.wishfy.exceptions.ResourceNotFoundException;
-import com.wishfy.helper.AppConstants;
-import com.wishfy.model.Employee;
-import com.wishfy.repositories.EmployeeRepository;
-import com.wishfy.services.EmployeeService;
+import com.wishfy.ems.dtos.EmployeeDto;
+import com.wishfy.ems.helper.AppConstants;
+import com.wishfy.ems.repositories.EmployeeRepository;
+import com.wishfy.ems.services.EmployeeService;
+import com.wishfy.ems.exceptions.ResourceNotFoundException;
+import com.wishfy.ems.model.Employee;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +41,7 @@ public class ServiceImplementation implements EmployeeService {
     @Override
     public EmployeeDto getEmployeeById(Long employeeId) {
         log.info("Initiated Dao call for get Employee by employeeId:{}", employeeId);
-        Employee employee1= this.employeeRepository.findById(employeeId).orElseThrow(() ->new ResourceNotFoundException(AppConstants.NOT_FOUND +  employeeId));
+        Employee employee1= this.employeeRepository.findById(employeeId).orElseThrow(() ->new ResourceNotFoundException(AppConstants.NOT_FOUND +  employeeId, 0));
         log.info("Completed Dao call for get Employee by employeeId:{}", employeeId);
         return employeeDto(employee1);
 
@@ -50,7 +50,7 @@ public class ServiceImplementation implements EmployeeService {
     @Override
     public EmployeeDto updateEmployee(EmployeeDto employeeDto, Long employeeId) {
         log.info("Initiated Dao call for update Employee by employeeId:{}", employeeId);
-        Employee employee = this.employeeRepository.findById(employeeId).orElseThrow(() -> new ResourceNotFoundException(AppConstants.NOT_FOUND +  employeeId));
+        Employee employee = this.employeeRepository.findById(employeeId).orElseThrow(() -> new ResourceNotFoundException(AppConstants.NOT_FOUND +  employeeId, 0));
         employee.setEmployeeEmail(employeeDto.getEmployeeEmail());
         employee.setEmployeeDepartment(employeeDto.getEmployeeDepartment());
         employee.setJoiningDate(employeeDto.getJoiningDate());
@@ -62,7 +62,7 @@ public class ServiceImplementation implements EmployeeService {
     @Override
     public void removeEmployee(Long employeeId) {
         log.info("Initiated Dao call for remove Employee");
-        Employee employee1 = this.employeeRepository.findById(employeeId).orElseThrow(() -> new ResourceNotFoundException(AppConstants.NOT_FOUND  +  employeeId));
+        Employee employee1 = this.employeeRepository.findById(employeeId).orElseThrow(() -> new ResourceNotFoundException(AppConstants.NOT_FOUND  +  employeeId, 0));
         log.info("Completed Dao call for remove Employee");
         this.employeeRepository.delete(employee1);
 

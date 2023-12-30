@@ -1,4 +1,4 @@
-package com.wishfy.exceptions;
+package com.wishfy.ems.exceptions;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class ResourceNotFoundException extends RuntimeException{
 
-    public ResourceNotFoundException (String resourceName){
+    public ResourceNotFoundException (String resourceName, int i){
 super(resourceName);
 
     }
